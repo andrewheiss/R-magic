@@ -8,7 +8,6 @@
 * Huge list of R tips: http://pj.freefaculty.org/R/Rtips.html
 * R Wikibook: http://en.wikibooks.org/wiki/R_Programming
 * One R Tip a Day: http://onertipaday.blogspot.com/
-* R graphics tips and examples: http://rgraphics.limnology.wisc.edu/index.php
 
 # Data visualization
 
