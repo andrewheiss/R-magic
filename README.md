@@ -2,7 +2,7 @@
 
 This is a collection of R scripts from Dr. Ray Nelson's stats and forecasting classes at Brigham Young University (MBA 609 and PMGT 634).
 
-Feel free to fork the repository and add your own scripts (send me push requests as needed). If git isn't your thing, e-mail me any scripts or corrections.
+Feel free to fork the repository and add your own scripts (send me pull requests as needed). If git isn't your thing, e-mail me any scripts or corrections.
 
 ## License
 
