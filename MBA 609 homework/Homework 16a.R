@@ -18,12 +18,12 @@
 library(car)
 
 # Load dataset
-load("~/Documents/BYU 2011-2012/Fall 2011/MBA 609/Datasets/MBA609-19.RData")
+load("~/Documents/BYU 2011-2012/Fall 2011/MBA 609/R magic/MBA 609 datasets/MBA609-19.RData")
 
-variable <- techStocks$IBM
-
+# variable <- techStocks$IBM
+variable <- techStocks$Microsoft
 # Recode missing values if needed
-variable <- recode(variable, "-99=NA")
+# variable <- recode(variable, "-99=NA")
 
 #---------------------------------------------
 #                 Graph setup
@@ -32,11 +32,12 @@ variable <- recode(variable, "-99=NA")
 # title <- "Distribution of miles per gallon (highway)"
 # xlabel <- "Miles per gallon (highway)"
 # ylabel <- "Number of cars"
-title <- "IBM monthly returns (1990-2005)"
+title <- "Microsoft monthly returns (1990-2005)"
 xlabel <- "Monthly return"
 ylabel <- "Frequency"
 
-histColor <- "#283C5D"
+# histColor <- "#283C5D"
+histColor <- "#5D7359"
 
 # X axis scale
 # Either set values below
@@ -44,6 +45,8 @@ histColor <- "#283C5D"
 xmin <- -0.5
 xmax <- 0.5
 by <- 0.1
+
+ymax <- 80
 
 # Set up precise bin intervals
 bins <- seq(xmin, xmax, by=by)
@@ -81,12 +84,14 @@ layout(m, 1, c(1,3))
 # (bottom, left, top, right)
 par(mar=c(0, 6, 3, 2.5), family="Helvetica", font.lab=2, cex.main=1.7, col.axis="#666666")
 boxplot <- boxplot(variable, horizontal=T, axes=F, main=title, ylim=c(xmin,xmax))
+# boxplot <- boxplot(variable, horizontal=T, axes=F, main=title)
 
 # Set the margins for the bottom row and build the histogram
 par(mar=c(8, 4.5, 0, 1))
 
 # Build colorless histogram
-hist(variable, xlab=xlabel, ylab=ylabel, main=NULL, breaks=bins)
+hist(variable, xlab=xlabel, ylab=ylabel, main=NULL, breaks=bins, ylim=c(0,ymax),prob=T)
+# hist(variable, xlab=xlabel, ylab=ylabel, main=NULL)
 # Add background color and lines
 rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = "#dadada")
 abline(h=axTicks(2), lty=1, col="#ffffff")
@@ -105,7 +110,7 @@ mtext(paste("n =", n,
             "\t\t Median:", round(median, digits=2),
             sep=" "), 1, 5)
 mtext(paste("Standard deviation:", round(stdev, digits=2),
-            "\t\t Coefficient of variance:", round(coefvar, digits=2),
+            "\t\t Coefficient of variation:", round(coefvar, digits=2),
             sep=" "), 1, 6.4)
 
 # Revert to original plot settings

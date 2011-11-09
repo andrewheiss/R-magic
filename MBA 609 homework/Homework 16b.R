@@ -9,7 +9,7 @@
 #--------------------------------------------------------------------------
 
 # Load dataset
-load("~/Documents/BYU 2011-2012/Fall 2011/MBA 609/Datasets/MBA609-19.RData")
+load("~/Documents/BYU 2011-2012/Fall 2011/MBA 609/R magic/MBA 609 datasets/MBA609-19.RData")
 
 # Load required libraries
 library(car)

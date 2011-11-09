@@ -7,7 +7,7 @@
 # MBA 609 - November 2011
 #
 # Special instructions:
-#   * This contains all the R stuff necessary to do all the analysis the chapter talks abour
+#   * This contains all the R stuff necessary to do all the analysis the chapter talks about
 #   * Run each line or each chunk of code individually
 #
 #--------------------------------------------------------------------------
