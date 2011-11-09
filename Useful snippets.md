@@ -1,3 +1,8 @@
+Finding attributes of an object:
+
+	test <- chisq.test(...)
+	attributes(test)
+
 Get World Bank Data!
 
 	library(WDI)
