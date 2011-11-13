@@ -47,9 +47,9 @@ y <- gasHeating$naturalGas
 
 # Color all the dots blue
 color <- rep("green", length(x))                # Upper left
-color[(x < mean(x))&(y > mean(y))] <-"red"      # Upper right
-color[(x > mean(x))&(y < mean(y))] <-"red"      # Lower left
-color[(x < mean(x))&(y < mean(y))] <-"green"    # Lower right
+color[(x < mean(x, na.rm=TRUE))&(y > mean(y, na.rm=TRUE))] <-"red"      # Upper right
+color[(x > mean(x, na.rm=TRUE))&(y < mean(y, na.rm=TRUE))] <-"red"      # Lower left
+color[(x < mean(x, na.rm=TRUE))&(y < mean(y, na.rm=TRUE))] <-"green"    # Lower right
 
 # Plot the scatter plot
 plot(x, y, col=color, pch=20, xlab="Heating Degree-Days", ylab="Natural Gas (MCF)") 
@@ -63,6 +63,14 @@ text(1, 1, "+", cex=1.5)
 text(max(x), 1, "-", cex=1.5)
 text(1, max(y), "-", cex=1.5)
 text(max(x), max(y), "+", cex=1.5)
+
+# Add rugs just for fun
+rug(x, col="#999999")
+rug(y, side=2, col="#999999")
+
+
+# Scatterplot matrix
+pairs(~naturalGas+heatingDD+sqFt, data=gasHeating, main="Simple Scatterplot Matrix")
 
 
 #*******
@@ -89,3 +97,5 @@ lm(y ~ x)
 
 # Add the line to an existing plot
 abline(lm(y ~ x))
+
+lines(loess.smooth(x,y), col="red")
