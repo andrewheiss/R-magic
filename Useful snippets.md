@@ -51,6 +51,15 @@ Recoding data: (see also `recode()`)
 	
 	# This works too, and is probably easier
 	variable[variable > 50] <- NA
+	
+	# # update() nondestructively removes specific observations from models
+	x <- cars$weight
+	y <- cars$mpgCity
+	model <- lm(y ~ x)
+	plot(x,y)
+	abline(model)
+	identify(x,y)
+	model1 <- update(model, subset=c(-84,-206))
 
 Best way to recode: (in the car library)
 

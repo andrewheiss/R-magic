@@ -64,7 +64,7 @@ plot(x, y, xlab=xlabel, ylab=ylabel)
 minor.tick()
 
 # Add grey background with gridlines
-rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col = "#e5e5e5")
+rect(par("usr")[1], par("usr")[3], par("usr")[2], par("usr")[4], col="#e5e5e5")
 abline(h=axTicks(2), v=axTicks(1), lty=1, col="#ffffff", lwd=2)    # Add thick lines on major tick marks
 
 # Determine minor lines (unfortunately minor.tick() doesn't return the marks it creates...)
