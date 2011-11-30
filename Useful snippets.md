@@ -8,6 +8,10 @@ Get World Bank Data!
 	library(WDI)
 	DF <- WDI(country=c("US","CA","MX"), indicator="NY.GDP.MKTP.KD.ZG", start=1990, end=2008)
 
+Prompt user for a file:
+
+	file.choose(new=TRUE)
+
 Converting to z-scores:
 
 	# Converting a whole column or vector

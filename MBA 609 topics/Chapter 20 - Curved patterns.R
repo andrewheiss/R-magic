@@ -14,6 +14,10 @@
 
 load("~/Documents/BYU 2011-2012/Fall 2011/MBA 609/R magic/MBA 609 datasets/stineFoster20.RData")
 
+# The functions visual.test() and elasticity() are part of the custom package I've made named "byumpa"
+# Download it at https://github.com/andrewheiss/byumpa/downloads and install it using the R package manager
+library(byumpa)
+
 #****************************
 #----------------------------
 # Reciprocal transformation
@@ -157,12 +161,6 @@ lines(y.new ~ x.new, data=d, lwd=1, col="blue")
 summary(model.adj)
 
 # Optimal price with elasticity:
-# C = cost of item; E = elasticity
-# Optimal price = C(E/(E+1))
-elasticity <- function(cost, elasticity) {
-  cost * (elasticity/(elasticity + 1))
-}
-
 # Cost of can is 60 cents...
 elasticity(.6, model.adj$coefficients[2])
 # $1.016 is the optimal price
@@ -203,6 +201,16 @@ plot(log(x), log(y), pch=20)
 abline(model.adj, col="red")
 visual.test(log(x), model.adj$residuals)
 # That fixed it! It's linear!
+
+# Just for fun, try a Box-Cox transformation
+library(car)
+lambda <- powerTransform(model); lambda
+x2 <- bcPower(x, lambda$lambda)
+y2 <- bcPower(y, lambda$lambda)
+model.boxcox <- lm(y2 ~ x2)
+summary(model.boxcox)
+plot(x2,y2, pch=20)
+abline(model.boxcox, col="red")
 
 # Compare the two estimates
 # Replot everything

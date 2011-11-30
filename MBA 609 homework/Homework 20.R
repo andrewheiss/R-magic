@@ -1,7 +1,5 @@
 load("/Users/andrew/Documents/BYU 2011-2012/Fall 2011/MBA 609/R magic/MBA 609 datasets/stineFoster19.RData")
 
-file.choose(new=TRUE)
-
 # y <- seattleHomes$price
 # x <- seattleHomes$squareFeet
 # xlabel <- "Square feet"
