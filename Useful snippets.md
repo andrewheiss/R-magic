@@ -38,6 +38,17 @@ Add text to a plot with `text()` or `mtext()`
 
 Recoding data: (see also `recode()`)
 
+	# Recoding on import
+	read.table(..., na.strings="99/(null)/whatever")
+	
+	# Recode an entire table after import (not as good though, since numeric data could be misinterpreted as factors)
+	foo <- data.frame("col1"= c(1, 3, 5, 7), "col2" = c(0.1, "(NULL)", 0.4, 0.8), "col3"=c("(NULL)", 3, 9, 2)) 
+	NAs <- foo == "(NULL)"
+	## by replace method
+	is.na(foo)[NAs] <- TRUE
+	## or directly
+	foo[NAs] <- NA
+
 	# create 2 age categories 
 	mydata$agecat <- ifelse(mydata$age > 70, 
 	c("older"), c("younger")) 
